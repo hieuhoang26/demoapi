@@ -1,57 +1,148 @@
-.container {
+.login-page {
+    //background-color: #776B5D;
+    background-image: linear-gradient(to right, #8360c3, #2ebf91);
+    height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding-top: 20px;
+    justify-content: center;
 
-    .login {
-        width: 40%;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        padding: 10px;
-        background-color: #ccc;
+    .card {
+        border: none;
+        border-top: 5px solid #0703f1;
+        background: #e9e2dd;
+        color: #0d0c14;
 
-        .local {
-            .form {
-                .button {
-                    margin: 5px;
-                    border-radius: 5px;
-                    border: 1px solid rgb(161, 87, 61);
-                    color: azure;
-                    background-color: rgb(245, 101, 48);
-
-                    &:hover {
-                        background-color: rgb(161, 87, 61);
-                    }
-                }
-
-                input {
-                    border: 1px solid;
-                    border-radius: 5px;
-                }
-            }
+        .title {
+            float: none;
+            position: relative;
+            margin: 30px auto 20px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            font-weight: 700;
+            font-size: 45px;
+            color: rgb(174, 20, 221);
         }
 
-        .google {
-            margin-top: 20px;
+        .myform {
+            padding: 0 25px 0 33px;
 
-            button {
-                background-color: azure;
-                border-radius: 5px;
-                border: 1px solid azure;
+            .form-group {
+                position: relative;
+
+                .icons-eye {
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    /* Điều chỉnh khoảng cách từ biểu tượng đến viền phải của input */
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                }
             }
 
-        }
 
-        .facebook {
-            margin-top: 20px;
 
-            button {
-                color: white;
-                background-color: rgb(77, 77, 248);
-                border-radius: 5px;
-                border: 1px solid rgb(77, 77, 248);
+
+            .form-control {
+                border: 1px solid #57557A;
+                border-radius: 3px;
+                background: #e5e5ee;
+                margin-bottom: 20px;
+                letter-spacing: 1px;
+
+            }
+
+            &:focus {
+                border: 1px solid #57557A;
+                border-radius: 3px;
+                box-shadow: none;
+                background: #c6c5e6;
+                color: #110d0d;
+                letter-spacing: 1px;
+            }
+
+            .form-check {
+                .form-check-input {
+                    margin-top: 8px !important;
+                }
             }
         }
     }
+
+    @media screen and (max-width: 768px) {
+        margin-right: 5px;
+    }
+}
+
+.btn-lg {
+    button {
+        background: linear-gradient(135deg, rgba(176, 106, 252, 1) 39%, rgba(116, 17, 255, 1) 101%);
+        border: none;
+        border-radius: 50px;
+    }
+
+    small {
+        color: #F2CEFF;
+        font-size: 20px;
+        font-weight: 500;
+
+        .loaderIcon {
+            margin-right: 7px;
+            top: 2px;
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: scale(1) rotate(0deg);
+            }
+
+            to {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+    }
+}
+
+.fab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: #F3EEEA;
+    height: 40px;
+    width: 90px;
+}
+
+.fab:hover {
+    cursor: pointer;
+}
+
+.fa-twitter {
+    color: #56ABEC;
+}
+
+.fa-facebook {
+    color: #1775F1;
+}
+
+.fa-google {
+    color: #CB5048;
+}
+
+.bn {
+    text-decoration: underline;
+}
+
+.bn:hover {
+    cursor: pointer;
+}
+
+.signup {
+    cursor: pointer;
+}
+
+.far.fa-user {
+    font-size: 13px;
+    padding: 5px;
 }

@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import { useState } from 'react';
 import { useFormik } from "formik";
 import { useAuth } from '../Sercutiry/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -11,9 +12,13 @@ import './Login.scss';
 
 
 
+
 function LoginComponent() {
     let Auth = useAuth();
     let navigate = useNavigate();
+    const [isShowPassword, setShowPassword] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
+
 
     // login local
     let formik = useFormik({
@@ -57,6 +62,7 @@ function LoginComponent() {
                         socialId: decoded.user_id,
                         type: "0"
                     })
+                    console.log(response)
                     Auth.setAuthenticated(true)
                     Auth.setRoles(response.data.roles);
                     sessionStorage.setItem("isAuthenticated", JSON.stringify(true))
@@ -106,56 +112,93 @@ function LoginComponent() {
             })
             .catch((error) => console.log(error))
     }
+    const BackHomePage = () => {
+        navigate("/")
+    }
+    const GoToSignUp = () => {
+        navigate("/signup")
+    }
 
     // login github
 
     return (
-        <div className="container">
-            <div className="login">
-                <div className="local">
-                    <form className="form" onSubmit={formik.handleSubmit}>
-                        <label>UserName</label>
-                        <div>
-                            <input
-                                type="text"
-                                name="username"
-                                id="username"
-                                value={formik.values.username}
+        <div className="login-page">
+            <div className="row d-flex justify-content-center mt-5" style={{ width: '35%' }}>
+                <div className="card py-3 px-2">
+                    <div className="title">
+                        Login
+                    </div>
+                    <form className="myform">
+                        <div className="form-group">
+                            <input type="text" value={formik.values.username} className="form-control" placeholder="User Name"
                                 onChange={formik.handleChange}
-                                placeholder="Enter your username"
                             />
-                            {formik.errors.username && (
-                                <p className="errorMsg"> {formik.errors.username} </p>
-                            )}
                         </div>
-                        <label>Password</label>
-                        <div>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                value={formik.values.password}
+                        <div className="form-group showpass">
+                            <input type={isShowPassword ? "password" : "text"} value={formik.values.password} className="form-control" placeholder="Password"
                                 onChange={formik.handleChange}
-                                placeholder="Enter your password"
                             />
-                            {formik.errors.password && (
-                                <p className="errorMsg"> {formik.errors.password} </p>
-                            )}
+                            {isShowPassword ?
+                                <span className='icons-eye'
+                                    onClick={() => { setShowPassword(false) }}
+                                >
+                                    <i class="bi bi-eye-slash-fill"></i>
+                                </span>
+                                :
+                                <span className='icons-eye'
+                                    onClick={() => { setShowPassword(true) }}
+                                >
+                                    <i class="bi bi-eye-fill"></i>
+                                </span>}
+
                         </div>
-                        <div>
-                            <button className="button" type="submit"> Login </button>
+                        <div className="row ">
+                            <div className="col-md-6 col-12">
+                                <div className="form-group form-check ">
+                                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                                    <label className="form-check-label mt-1" htmlFor="exampleCheck1">Remember Password</label>
+                                </div>
+                            </div>
+                            <div className="col-md-6 col-12 bn">Fogot Password?</div>
+                        </div>
+                        <div className="form-group btn-lg mt-3 d-flex justify-content-center">
+                            <button type="button" className="btn btn-block w-100"
+                                onClick={formik.handleSubmit}
+                                disabled={isLoading}
+                            >
+                                <small>
+                                    {isLoading === true &&
+                                        <i class="bi bi-arrow-clockwise loaderIcon"></i>
+                                    }
+                                    <span>Login</span>
+                                </small>
+                            </button>
                         </div>
                     </form>
-                </div>
-                <div className="google">
-                    <button onClick={handleGoogleSignin}>
-                        Login with Google
-                    </button>
-                </div>
-                <div className="facebook">
-                    <button onClick={handleFacebookSignin}>
-                        Login with Facebook
-                    </button>
+                    <p className="text-center mb-3 mt-2">Or Sign Up Using</p>
+                    <div className="row mx-auto ">
+                        <div className="col-4">
+                            <i className="fab fa-twitter"></i>
+                        </div>
+                        <div className="col-4" onClick={handleFacebookSignin}>
+                            <i className="fab fa-facebook"></i>
+                        </div>
+                        <div className="col-4" onClick={handleGoogleSignin}>
+                            <i className="fab fa-google"></i>
+                        </div>
+                    </div>
+
+                    <div className="row pt-3 align-self-center">
+                        <span>Have not acccount yet?
+                            <span className='p-1 text-decoration-underline signup'
+                                onClick={() => { GoToSignUp() }}
+                            >Sign Up</span>
+                        </span>
+                    </div>
+                    <div className="row pt-2 align-self-center">
+                        <p className=' text-decoration-underline signup' onClick={() => { BackHomePage() }}>&#60;&#60;&#60; Back</p>
+                    </div>
+
                 </div>
             </div>
         </div>

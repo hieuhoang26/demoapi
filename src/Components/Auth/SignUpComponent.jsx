@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import React, { useEffect, useState } from 'react';
 import * as Yup from "yup";
 import { useAuth } from '../Sercutiry/AuthContext';
 import { SignupApi, LoginSocialApi } from '../API/BookStoreApi';
@@ -7,11 +8,13 @@ import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode";
 import { signInWithPopup } from "firebase/auth";
 import { auth, facebookProvider, googleProvider } from "../../Configuration/FirebaseConfig";
-import './Signup.scss';
+import './Login.scss';
 
 function SignUpComponent() {
     let Auth = useAuth();
     let navigate = useNavigate();
+    const [isShowPassword, setShowPassword] = useState(true)
+
     const formik = useFormik({
         initialValues: {
             username: "",
@@ -22,25 +25,25 @@ function SignUpComponent() {
         },
         validationSchema: Yup.object({
             username: Yup.string()
-                .required("Required")
+                // .required("Required")
                 .min(5, "Must be 5 characters or more"),
             email: Yup.string()
-                .required("Required")
+                // .required("Required")
                 .matches(
                     /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
                     "Please enter a valid email address"
                 ),
             password: Yup.string()
-                .required("Required")
+                // .required("Required")
                 .matches(
                     /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/,
                     "Password must be 7-19 characters and contain at least one letter, one number and a special character"
                 ),
             confirmedPassword: Yup.string()
-                .required("Required")
+                // .required("Required")
                 .oneOf([Yup.ref("password"), null], "Password must match"),
             phoneNumber: Yup.string()
-                .required("Required")
+                // .required("Required")
                 .matches(
                     /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
                     "Must be a valid phone number"
@@ -57,7 +60,25 @@ function SignUpComponent() {
             }
         }
     });
-
+    useEffect(() => {
+        if (formik.submitCount > 0) {
+            if (formik.errors.email) {
+                toast.error(formik.errors.email);
+            }
+            if (formik.errors.username) {
+                toast.error(formik.errors.username);
+            }
+            if (formik.errors.password) {
+                toast.error(formik.errors.password);
+            }
+            if (formik.errors.confirmedPassword) {
+                toast.error(formik.errors.confirmedPassword);
+            }
+            if (formik.errors.phoneNumber) {
+                toast.error(formik.errors.phoneNumber);
+            }
+        }
+    }, [formik.submitCount]);
     // login google
     const handleGoogleSignin = () => {
         signInWithPopup(auth, googleProvider)
@@ -119,97 +140,118 @@ function SignUpComponent() {
             })
             .catch((error) => console.log(error))
     }
-
+    const BackHomePage = () => {
+        navigate("/")
+    }
+    const GoToLogin = () => {
+        navigate("/login")
+    }
 
     return (
-        <div className="signup">
-            <div className="container">
-                <div className="local">
-                    <form className="infoform" onSubmit={formik.handleSubmit}>
-                        <label>UserName</label>
-                        <div>
-                            <input
-                                type="text"
-                                id="username"
-                                name="username"
-                                value={formik.values.username}
-                                onChange={formik.handleChange}
-                                placeholder="Enter your username"
-                            />
-                            {formik.errors.username && (
-                                <p className="errorMsg"> {formik.errors.username} </p>
-                            )}
-                        </div>
-                        <label>Email address</label>
-                        <div>
+        <div className="login-page">
+            <div className="row d-flex justify-content-center mt-5" style={{ width: '35%' }}>
+                <div className="card py-3 px-2">
+                    <div className="title">
+                        Sign Up
+                    </div>
+                    <form className="myform">
+                        <div className="form-group">
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
                                 value={formik.values.email}
-                                onChange={formik.handleChange}
-                                placeholder="Enter your email"
-                            />
-                            {formik.errors.email && (
-                                <p className="errorMsg"> {formik.errors.email} </p>
-                            )}
+                                className="form-control"
+                                placeholder="Email"
+                                onChange={formik.handleChange} />
                         </div>
-                        <label>Password</label>
-                        <div>
+                        <div className="form-group">
                             <input
-                                type="password"
+                                type="text"
+                                id="username"
+                                name="username"
+                                value={formik.values.username}
+                                className="form-control"
+                                placeholder="UserName"
+                                onChange={formik.handleChange}
+                            />
+                        </div>
+                        <div className="form-group showpass">
+                            <input
+                                type={isShowPassword ? "password" : "text"}
                                 id="password"
                                 name="password"
                                 value={formik.values.password}
+                                className="form-control"
+                                placeholder="Password"
                                 onChange={formik.handleChange}
-                                placeholder="Enter your password"
                             />
-                            {formik.errors.password && (
-                                <p className="errorMsg"> {formik.errors.password} </p>
-                            )}
+                            {isShowPassword ?
+                                <span className='icons-eye'
+                                    onClick={() => { setShowPassword(false) }}
+                                >
+                                    <i class="bi bi-eye-slash-fill"></i>
+                                </span>
+                                :
+                                <span className='icons-eye'
+                                    onClick={() => { setShowPassword(true) }}
+                                >
+                                    <i class="bi bi-eye-fill"></i>
+                                </span>}
                         </div>
-                        <label>Confirm Password</label>
-                        <div>
+                        <div className="form-group showpass">
                             <input
-                                type="password"
                                 id="confirmedPassword"
                                 name="confirmedPassword"
+                                type={isShowPassword ? "password" : "text"}
                                 value={formik.values.confirmedPassword}
-                                onChange={formik.handleChange}
+                                className="form-control"
                                 placeholder="Confirm your password"
+                                onChange={formik.handleChange}
                             />
-                            {formik.errors.confirmedPassword && (
-                                <p className="errorMsg"> {formik.errors.confirmedPassword} </p>
-                            )}
+                            {isShowPassword ?
+                                <span className='icons-eye'
+                                    onClick={() => { setShowPassword(false) }}
+                                >
+                                    <i class="bi bi-eye-slash-fill"></i>
+                                </span>
+                                :
+                                <span className='icons-eye'
+                                    onClick={() => { setShowPassword(true) }}
+                                >
+                                    <i class="bi bi-eye-fill"></i>
+                                </span>}
                         </div>
-                        <label>Phone number</label>
-                        <div>
+                        <div className="form-group">
                             <input
                                 type="text"
                                 id="phoneNumber"
                                 name="phoneNumber"
-                                value={formik.values.phone}
+                                value={formik.values.phoneNumber}
+                                className="form-control"
+                                placeholder="Phone Number"
                                 onChange={formik.handleChange}
-                                placeholder="Enter your phone numbers"
                             />
-                            {formik.errors.phoneNumber && (
-                                <p className="errorMsg"> {formik.errors.phoneNumber} </p>
-                            )}
                         </div>
-                        <div>
-                            <button type="submit"> Signup </button>
+                        <div className="form-group mt-3 d-flex justify-content-center">
+                            <button type="button" className="btn btn-block btn-primary btn-lg w-100 "
+                                onClick={formik.handleSubmit}
+                            >
+                                <small><i className="far fa-user pr-2"></i>SignUp</small>
+                            </button>
                         </div>
                     </form>
-                </div>
-                <div className="google">
-                    <button onClick={handleGoogleSignin}>
-                        Sign in with Google
-                    </button>
-                </div>
-                <div className="facebook">
-                    <button onClick={handleFacebookSignin}>
-                        Sign in with Facebook
-                    </button>
+                    <div className="row pt-3 align-self-center">
+                        <span>Have acccount yet?
+                            <span className='p-1 text-decoration-underline signup'
+                                onClick={() => { GoToLogin() }}
+                            >Login</span>
+                        </span>
+                    </div>
+                    <div className="row pt-2 align-self-center">
+                        <p className=' text-decoration-underline signup' onClick={() => { BackHomePage() }}>&#60;&#60;&#60; Back</p>
+                    </div>
+
                 </div>
             </div>
         </div>

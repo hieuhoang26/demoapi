@@ -140,9 +140,9 @@
 
     .fruite {
         .input-group {
-            input {
-                height: auto;
-
+            .span-label {
+                padding: 5px;
+                font-weight: 600;
             }
         }
 

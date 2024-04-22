@@ -20,6 +20,7 @@ import UpdateBookComponent from './Components/Book/UpdateBookComponent';
 import FooterComponent from './Components/Footer/FooterComponent'
 import CartComponent from './Components/Cart/CartComponent';
 import ViewShopComponent from './Components/Shop/ViewShopComponent';
+import Layout from './Layout';
 
 function AuthenticatedRoute({ children }) {
   let Auth = useAuth();
@@ -36,30 +37,26 @@ function App() {
     <div className="App">
       <AuthProvider>
         <BrowserRouter>
-          <HeaderComponent />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/home' element={<Home />} />
-
             <Route path='/login' element={<LoginComponent />} />
             <Route path='/signup' element={<SignUpComponent />} />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path='/home' element={<Home />} />
+              <Route path='/account' element={<AuthenticatedRoute><AccountComponent /></AuthenticatedRoute>} />
+              <Route path='/updateaccount' element={<AuthenticatedRoute><UpdateAccountComponent /></AuthenticatedRoute>} />
+              <Route path='/shop' element={<AuthenticatedRoute><ShopComponent /></AuthenticatedRoute>} />
+              <Route path='/createshop' element={<AuthenticatedRoute><CreateShopComponent /></AuthenticatedRoute>} />
+              <Route path='/updateshop' element={<AuthenticatedRoute><UpdateShopComponent /></AuthenticatedRoute>} />
+              <Route path='/updateshopdetail' element={<AuthenticatedRoute><UpdateShopDetailComponent /></AuthenticatedRoute>} />
+              <Route path='/viewshopdetail/:shopId' element={<ViewShopComponent />} />
 
-            <Route path='/account' element={<AuthenticatedRoute><AccountComponent /></AuthenticatedRoute>} />
-            <Route path='/updateaccount' element={<AuthenticatedRoute><UpdateAccountComponent /></AuthenticatedRoute>} />
-
-            <Route path='/shop' element={<AuthenticatedRoute><ShopComponent /></AuthenticatedRoute>} />
-            <Route path='/createshop' element={<AuthenticatedRoute><CreateShopComponent /></AuthenticatedRoute>} />
-            <Route path='/updateshop' element={<AuthenticatedRoute><UpdateShopComponent /></AuthenticatedRoute>} />
-            <Route path='/updateshopdetail' element={<AuthenticatedRoute><UpdateShopDetailComponent /></AuthenticatedRoute>} />
-            <Route path='/viewshopdetail/:shopId' element={<ViewShopComponent />} />
-
-
-            <Route path='/createbook' element={<AuthenticatedRoute><CreateBookComponent /></AuthenticatedRoute>} />
-            <Route path='/bookdetail/:id' element={<BookDetailComponent />} />
-            <Route path='/updatebook/:id' element={<AuthenticatedRoute><UpdateBookComponent /></AuthenticatedRoute>} />
-            <Route path='/cart' element={<AuthenticatedRoute><CartComponent /></AuthenticatedRoute>} />
+              <Route path='/createbook' element={<AuthenticatedRoute><CreateBookComponent /></AuthenticatedRoute>} />
+              <Route path='/bookdetail/:id' element={<BookDetailComponent />} />
+              <Route path='/updatebook/:id' element={<AuthenticatedRoute><UpdateBookComponent /></AuthenticatedRoute>} />
+              <Route path='/cart' element={<AuthenticatedRoute><CartComponent /></AuthenticatedRoute>} />
+            </Route>
           </Routes>
-          <FooterComponent />
           <ToastContainer
             position="top-right"
             autoClose={5000}

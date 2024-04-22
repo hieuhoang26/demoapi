@@ -11,22 +11,28 @@ function FooterComponent() {
 
                 <div>
                     <a href='' className='me-4 text-reset'>
-                        <MDBIcon fab icon="facebook-f" />
+                        {/* <MDBIcon fab icon="facebook-f" /> */}
+                        <i class="bi bi-facebook"></i>
                     </a>
                     <a href='' className='me-4 text-reset'>
-                        <MDBIcon fab icon="twitter" />
+                        {/* <MDBIcon fab icon="twitter" /> */}
+                        <i class="bi bi-twitter"></i>
                     </a>
                     <a href='' className='me-4 text-reset'>
-                        <MDBIcon fab icon="google" />
+                        {/* <MDBIcon fab icon="google" /> */}
+                        <i class="bi bi-google"></i>
                     </a>
                     <a href='' className='me-4 text-reset'>
-                        <MDBIcon fab icon="instagram" />
+                        {/* <MDBIcon fab icon="instagram" /> */}
+                        <i class="bi bi-instagram"></i>
                     </a>
                     <a href='' className='me-4 text-reset'>
-                        <MDBIcon fab icon="linkedin" />
+                        {/* <MDBIcon fab icon="linkedin" /> */}
+                        <i class="bi bi-linkedin"></i>
                     </a>
                     <a href='' className='me-4 text-reset'>
-                        <MDBIcon fab icon="github" />
+                        {/* <MDBIcon fab icon="github" /> */}
+                        <i class="bi bi-github"></i>
                     </a>
                 </div>
             </section>
