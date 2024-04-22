@@ -1,0 +1,51 @@
+.nav {
+    display: flex;
+    background-color: rgb(245, 101, 48);
+    height: 60px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+
+    .left {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-decoration: none;
+            color: azure;
+            font-size: 2rem;
+            font-weight: bold;
+
+            &:hover {
+                color: rgb(243, 189, 170);
+            }
+        }
+    }
+
+    .right {
+        width: 80%;
+        display: flex;
+        justify-content: right;
+        padding-right: 5%;
+
+
+        .link {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: azure;
+
+            &:hover {
+                color: rgb(243, 189, 170);
+            }
+        }
+    }
+}

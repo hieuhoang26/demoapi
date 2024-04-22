@@ -1,0 +1,33 @@
+.sidebar {
+    color: black;
+    overflow-y: auto;
+    border-right: 2px solid #ccc;
+
+    .category {
+        margin-bottom: 10px;
+
+        .category-title {
+            cursor: pointer;
+            font-weight: bold;
+
+            &:hover {
+                color: orangered;
+            }
+        }
+
+        .subcategory-list {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .subcategory {
+            margin: 5px 0;
+            cursor: pointer;
+
+            &:hover {
+                color: orangered;
+            }
+        }
+
+    }
+}

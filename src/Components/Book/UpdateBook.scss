@@ -1,0 +1,23 @@
+.book {
+    display: flex;
+    border: 1px solid #ccc;
+    margin: 10px;
+    text-align: left;
+
+    .image {
+        padding: 10px;
+        width: 65%;
+    }
+
+    .info {
+        padding: 10px;
+        width: 35%;
+    }
+}
+
+.book-detail {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    text-align: left;
+}

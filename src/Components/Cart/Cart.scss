@@ -1,0 +1,132 @@
+.cart {
+    display: flex;
+    padding: 10px;
+
+    .cart-item-container {
+        width: 85%;
+
+        .cart-item {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            text-align: left;
+            display: flex;
+            margin: 5px;
+
+            button {
+                border-radius: 5px;
+                border: 1px solid rgb(167, 81, 50);
+                color: white;
+                background-color: rgb(248, 97, 42);
+
+                &:hover {
+                    background-color: rgb(167, 81, 50);
+                }
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .image {
+                width: 20%;
+
+                img {
+                    border-radius: 10px;
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+
+            .title {
+                width: 30%;
+                font-size: larger;
+
+            }
+
+            .price {
+                width: 10%;
+                font-size: large;
+                color: red;
+            }
+
+            .number {
+                width: 10%;
+
+                .number-list {
+                    display: flex;
+                    flex-direction: row;
+
+                    li {
+                        text-align: center;
+                        list-style: none;
+                        border: 1px solid #ccc;
+                        width: 25px;
+                        height: 25px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .check {
+                width: 10%;
+            }
+
+            .delete {
+                width: 10%;
+            }
+        }
+    }
+
+    .control {
+        width: 15%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        button {
+            border-radius: 5px;
+            border: 1px solid rgb(167, 81, 50);
+            color: white;
+            background-color: rgb(248, 97, 42);
+            width: fit-content;
+
+            &:hover {
+                background-color: rgb(167, 81, 50);
+            }
+        }
+    }
+
+}
+
+.bill {
+    .bill-item {
+        text-align: left;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+
+        span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+    button {
+        border-radius: 5px;
+        border: 1px solid rgb(167, 81, 50);
+        color: white;
+        background-color: rgb(248, 97, 42);
+        width: fit-content;
+
+        &:hover {
+            background-color: rgb(167, 81, 50);
+        }
+    }
+}

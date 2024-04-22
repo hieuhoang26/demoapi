@@ -1,0 +1,31 @@
+.book-data {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    text-align: left;
+    padding: 10px;
+
+    .info {
+        width: 50%;
+    }
+
+    .detail {
+        width: 50%;
+    }
+}
+
+.setting {
+    button {
+        margin-top: 10px;
+        border-radius: 5px;
+        color: aqua;
+        background-color: black;
+    }
+}
+
+.create-book {
+    font-weight: bold;
+
+    .errorMsg {
+        color: red;
+    }
+}
