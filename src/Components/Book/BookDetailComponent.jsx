@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import './BookDetail.scss'
 import { useAuth } from '../Sercutiry/AuthContext';
+import {
+    MDBTabs,
+    MDBTabsItem,
+    MDBTabsLink,
+    MDBTabsContent,
+    MDBTabsPane
+} from 'mdb-react-ui-kit';
 function BookDetailComponent() {
     let Auth = useAuth()
     let Navigate = useNavigate()
@@ -44,7 +51,6 @@ function BookDetailComponent() {
         retrieveBook()
     }, [])
 
-
     let handleMinusBookNumber = () => {
         if (bookNumber > 1) {
             setBookNumber(bookNumber - 1)
@@ -76,7 +82,18 @@ function BookDetailComponent() {
     let handleViewShop = () => {
         Navigate(`/viewshopdetail/${shop.id}`)
     }
+    //tab-pane
+    const [basicActive, setBasicActive] = useState('description');
+
+    const handleBasicClick = (value) => {
+        if (value === basicActive) {
+            return;
+        }
+
+        setBasicActive(value);
+    };
     return (
+
         // <div className='bookdetail'>
         //     <div className="book">
         //         <div className="image">

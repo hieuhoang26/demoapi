@@ -120,7 +120,6 @@ function LoginComponent() {
     const GoToSignUp = () => {
         navigate("/signup")
     }
-
     // login github
 
     return (

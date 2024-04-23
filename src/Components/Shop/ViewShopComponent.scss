@@ -27,13 +27,12 @@
 }
 
 .books {
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-
     .item {
-        width: 15.5%;
-        height: 250px;
+        width: 23.3333%;
+        height: 300px;
         cursor: pointer;
         margin: 5px;
         display: flex;
@@ -42,7 +41,6 @@
         &:hover {
             .info {
                 background-color: rgb(245, 132, 91);
-
                 .price {
                     color: azure;
                 }

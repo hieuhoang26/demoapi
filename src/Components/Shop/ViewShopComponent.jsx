@@ -36,7 +36,7 @@ function ViewShopComponent() {
         <>
             <div className="info-shop">
                 <div className="image-shop">
-                    <img src={shopLogo} />
+                    <img src={`https://bookstore.io.vn${shopLogo}`} />
                 </div>
                 <div className="detail">
                     <table>
@@ -59,13 +59,13 @@ function ViewShopComponent() {
                 </div>
             </div>
             <div className="label">
-                <label>Shop Books</label>
+                <label className="font-weight-bold text-uppercase ">Shop Books</label>
             </div>
             <div className="books">
                 {bookData.map((book) => (
                     <div className='item' onClick={() => handleViewDetail(book.id)}>
                         <div className='image'>
-                            <img className='image-item' src={book.imagePath.substring(book.imagePath.indexOf("/images/"))} />
+                            <img className='image-item' src={`https://bookstore.io.vn${book.imagePath.substring(book.imagePath.indexOf("/images/"))}`} />
                         </div>
                         <div className='info'>
                             <div className='title'>{book.title}</div>
