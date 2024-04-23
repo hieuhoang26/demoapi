@@ -1,51 +1,143 @@
-.nav {
-    display: flex;
-    background-color: rgb(245, 101, 48);
-    height: 60px;
-    position: sticky;
-    top: 0;
+.app-bar {
+    color: white;
+    box-shadow: none;
+    background: #001524;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     width: 100%;
-    z-index: 2;
 
-    .left {
-        width: 20%;
+    .toolbar {
         display: flex;
-        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        height: 50px;
+    }
+
+    .title {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        font-family: Raleway;
+        font-weight: 600;
+        letter-spacing: 1;
+        color: white;
+
+        &:hover {
+            color: #ffff;
+            box-shadow: none;
+        }
 
         .logo {
+            margin-right: 10px;
+            height: 40px;
+        }
+    }
+
+    .grow {
+        flex-grow: 1;
+    }
+
+    .cart {
+        text-decoration: none;
+        color: white;
+        position: relative;
+        margin-right: 20px;
+
+        &:hover {
+            color: #ffff;
+            box-shadow: none;
+        }
+
+        .badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: red;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            text-decoration: none;
-            color: azure;
-            font-size: 2rem;
-            font-weight: bold;
+            align-items: center;
+            font-size: 12px;
+        }
+    }
+
+    .login {
+        text-decoration: none;
+
+        .login-button {
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 6px 12px;
+            background-color: transparent;
+            cursor: pointer;
 
             &:hover {
-                color: rgb(243, 189, 170);
+                color: #ffff;
+                box-shadow: none;
             }
         }
     }
 
-    .right {
-        width: 80%;
-        display: flex;
-        justify-content: right;
-        padding-right: 5%;
-
-
-        .link {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 1.5rem;
-            color: azure;
-
-            &:hover {
-                color: rgb(243, 189, 170);
-            }
-        }
+    &.scrolled {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; // Đảm bảo navbar hiển thị trên cùng
     }
 }
+
+// .nav {
+//     display: flex;
+//     background-color: rgb(245, 101, 48);
+//     height: 60px;
+//     position: sticky;
+//     top: 0;
+//     width: 100%;
+//     z-index: 2;
+
+//     .left {
+//         width: 20%;
+//         display: flex;
+//         justify-content: center;
+
+//         .logo {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: center;
+//             text-decoration: none;
+//             color: azure;
+//             font-size: 2rem;
+//             font-weight: bold;
+
+//             &:hover {
+//                 color: rgb(243, 189, 170);
+//             }
+//         }
+//     }
+
+//     .right {
+//         width: 80%;
+//         display: flex;
+//         justify-content: right;
+//         padding-right: 5%;
+
+
+//         .link {
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: center;
+//             text-decoration: none;
+//             margin: 0 10px;
+//             font-size: 1.5rem;
+//             color: azure;
+
+//             &:hover {
+//                 color: rgb(243, 189, 170);
+//             }
+//         }
+//     }
+// }
