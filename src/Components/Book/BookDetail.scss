@@ -1,120 +1,54 @@
-.bookdetail {
-    background-color: #ccc;
 
-    .book {
-        display: flex;
-        text-align: left;
-        margin: 0;
-        .image {
-            flex-grow: 1;
-            margin: 5px;
-            margin-top: 10px;
-            background-color: white;
-            border-radius: 10px;
-
-            img {
-                width: 70%;
-                height: 400px;
-                margin: 10px;
-                margin-top: 20px;
-                border-radius: 5px;
-            }
-        }
-
-        .info {
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            width: 35%;
-            margin: 5px;
-            margin-top: 10px;
-            background-color: white;
-
-            td {
-                padding: 5px;
-            }
-
-            .label {
-                color: #8a8282;
-                font-size: small;
-            }
-
-            .title {
-                font-size: 1.5rem;
-                font-family: Georgia, 'Times New Roman', Times, serif;
-            }
-
-            .price {
-                color: red;
-                font-size: larger;
-            }
-
-            .number {
-                display: flex;
-
-                li {
-                    text-align: center;
-                    list-style: none;
-                    border: 1px solid #ccc;
-                    width: 25px;
-                    height: 25px;
-                    cursor: pointer;
-                }
-            }
-
-            .button {
-                margin-top: 2rem;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                button {
-                    
-                    border-radius: 5px;
-                    padding: 8px 24px;
-                    color: white;
-                    border: none;
-                    background-color: rgb(248, 97, 42);
-                    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-                    transition: ease-in-out 0.3s;
-
-                    &:hover {
-                        background-color: rgb(165, 176, 45);
-                    }
-                }
-            }
+.container {
+    .book_image {
+        img {
+            height: 350px;
+            width: 300px;
         }
     }
 
-    .more {
-        display: flex;
+    .book_content {
+        .text-secondary {
+            color: #ffb524 !important;
+        }
 
-        .book-detail {
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            text-align: left;
-            margin: 5px;
-            width: 65%;
-            background-color: white;
+        .quantity {
+            .input-group-btn {
+                display: flex;
+                align-items: center;
+            }
 
-            table {
-                width: 100%;
+            .btn {
+                padding: 0;
+                /* Loại bỏ padding mặc định của nút */
+            }
 
-                tr {
-                    border-bottom: 1px solid #ccc;
-                }
-
-                .one {
-                    color: #6e6b6b;
-                    font-size: 15px;
-                }
+            .btn-minus,
+            .btn-plus {
+                width: 30px;
+                /* Thiết lập chiều rộng của nút */
+                height: 30px;
+                /* Thiết lập chiều cao của nút */
+                border-radius: 50%;
+                /* Biến nút thành hình tròn */
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
+
+        .text_dan {
+            font-size: 13px;
+            font-weight: 300;
+            font-style: italic;
+        }
+    }
+
+    .shop_content {
 
         .shop {
             border: 2px solid #ccc;
             border-radius: 10px;
-            text-align: left;
-            margin: 5px;
-            width: 35%;
             display: flex;
             background-color: white;
 
@@ -123,12 +57,11 @@
             }
 
             .shop-image {
-                width: 42%;
+                width: 200px;
                 display: flex;
                 justify-content: center;
 
                 img {
-                    margin-top: 50px;
                     height: 100px;
                     border-radius: 5px;
                 }
@@ -142,7 +75,6 @@
                 }
 
                 .detail {
-                    margin-top: 50px;
                     padding-left: 5px;
 
                     .name {
@@ -169,120 +101,248 @@
 
         }
     }
-
-    .description {
-        .label {
-            text-align: center;
-        }
-        
-
-        border: 2px solid #ccc;
-        border-radius: 10px;
-        margin: 5px;
-        padding: 5px;
-        background-color: white;
-
-        .content {
-            text-align: left;
-            padding-left: 10px;
-        }
-    }
-
-    .rate {
-        border: 2px solid #ccc;
-        border-radius: 10px;
-        text-align: left;
-        margin: 5px;
-        padding: 5px;
-        background-color: white;
-
-        table {
-            .one {
-                padding-left: 8px;
-                color: #6e6b6b;
-                font-size: small;
-            }
-
-            tr {
-                td {
-                    width: 150px;
-                }
-            }
-        }
-    }
-
-    .comment {
-        border: 2px solid #ccc;
-        border-radius: 10px;
-        text-align: left;
-        margin: 5px;
-        display: grid;
-        background-color: white;
-
-        .one {
-            font-size: larger;
-            font-weight: 500;
-            padding: 11px;
-        }
-
-        .view-comment {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            margin: 10px;
-            padding-left: 10px;
-
-            table {
-                width: 100%;
-
-                .name {
-                    width: 10%;
-                    color: #6e6b6b;
-                }
-
-                .content {
-                    width: 90%;
-                }
-            }
-        }
-    }
 }
 
-.project-tab {
-    padding: 10%;
-    margin-top: -8%;
-}
-.project-tab #tabs{
-    background: #007b5e;
-    color: #eee;
-}
-.project-tab #tabs h6.section-title{
-    color: #eee;
-}
-.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #0062cc;
-    background-color: transparent;
-    border-color: transparent transparent #f3f3f3;
-    border-bottom: 3px solid !important;
-    font-size: 16px;
-    font-weight: bold;
-}
-.project-tab .nav-link {
-    border: 1px solid transparent;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    color: #0062cc;
-    font-size: 16px;
-    font-weight: 600;
-}
-.project-tab .nav-link:hover {
-    border: none;
-}
-.project-tab thead{
-    background: #f3f3f3;
-    color: #333;
-}
-.project-tab a{
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
-}
+
+// .bookdetail {
+//     background-color: #ccc;
+
+//     .book {
+//         display: flex;
+//         text-align: left;
+//         margin: 0;
+
+//         .image {
+//             border: 2px solid #ccc;
+//             border-radius: 10px;
+//             width: 65%;
+//             margin: 5px;
+//             margin-top: 10px;
+//             background-color: white;
+
+//             img {
+//                 width: 30%;
+//                 height: 200px;
+//                 margin: 10px;
+//                 margin-top: 20px;
+//                 border-radius: 5px;
+//                 border: 1px solid #ccc;
+//             }
+//         }
+
+//         .info {
+//             border: 2px solid #ccc;
+//             border-radius: 10px;
+//             width: 35%;
+//             margin: 5px;
+//             margin-top: 10px;
+//             background-color: white;
+
+//             td {
+//                 padding: 5px;
+//             }
+
+//             .label {
+//                 color: #8a8282;
+//                 font-size: small;
+//             }
+
+//             .title {
+//                 font-size: 1.5rem;
+//                 font-family: Georgia, 'Times New Roman', Times, serif;
+//             }
+
+//             .price {
+//                 color: red;
+//                 font-size: larger;
+//             }
+
+//             .number {
+//                 display: flex;
+
+//                 li {
+//                     text-align: center;
+//                     list-style: none;
+//                     border: 1px solid #ccc;
+//                     width: 25px;
+//                     height: 25px;
+//                     cursor: pointer;
+//                 }
+//             }
+
+//             .button {
+//                 button {
+//                     border-radius: 5px;
+//                     border: 1px solid rgb(167, 81, 50);
+//                     color: white;
+//                     background-color: rgb(248, 97, 42);
+
+//                     &:hover {
+//                         background-color: rgb(167, 81, 50);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+//     .more {
+//         display: flex;
+
+//         .book-detail {
+//             border: 2px solid #ccc;
+//             border-radius: 10px;
+//             text-align: left;
+//             margin: 5px;
+//             width: 65%;
+//             background-color: white;
+
+//             table {
+//                 width: 100%;
+
+//                 tr {
+//                     border-bottom: 1px solid #ccc;
+//                 }
+
+//                 .one {
+//                     color: #6e6b6b;
+//                     font-size: 15px;
+//                 }
+//             }
+//         }
+
+//         .shop {
+//             border: 2px solid #ccc;
+//             border-radius: 10px;
+//             text-align: left;
+//             margin: 5px;
+//             width: 35%;
+//             display: flex;
+//             background-color: white;
+
+//             li {
+//                 list-style: none;
+//             }
+
+//             .shop-image {
+//                 width: 42%;
+//                 display: flex;
+//                 justify-content: center;
+
+//                 img {
+//                     margin-top: 50px;
+//                     height: 100px;
+//                     border-radius: 5px;
+//                 }
+//             }
+
+//             .shop-info {
+//                 width: 58%;
+
+//                 li {
+//                     margin: 5px 0;
+//                 }
+
+//                 .detail {
+//                     margin-top: 50px;
+//                     padding-left: 5px;
+
+//                     .name {
+//                         font-size: larger;
+//                         font-family: Georgia, 'Times New Roman', Times, serif;
+//                     }
+
+//                     .address {
+//                         font-weight: bolder;
+//                     }
+//                 }
+
+//                 button {
+//                     border-radius: 5px;
+//                     border: 1px solid rgb(167, 81, 50);
+//                     color: white;
+//                     background-color: rgb(248, 97, 42);
+
+//                     &:hover {
+//                         background-color: rgb(167, 81, 50);
+//                     }
+//                 }
+//             }
+
+//         }
+//     }
+
+//     .description {
+//         .label {
+//             text-align: left;
+//         }
+
+//         border: 2px solid #ccc;
+//         border-radius: 10px;
+//         margin: 5px;
+//         padding: 5px;
+//         background-color: white;
+
+//         .content {
+//             text-align: left;
+//             padding-left: 10px;
+//         }
+//     }
+
+//     .rate {
+//         border: 2px solid #ccc;
+//         border-radius: 10px;
+//         text-align: left;
+//         margin: 5px;
+//         padding: 5px;
+//         background-color: white;
+
+//         table {
+//             .one {
+//                 padding-left: 8px;
+//                 color: #6e6b6b;
+//                 font-size: small;
+//             }
+
+//             tr {
+//                 td {
+//                     width: 150px;
+//                 }
+//             }
+//         }
+//     }
+
+//     .comment {
+//         border: 2px solid #ccc;
+//         border-radius: 10px;
+//         text-align: left;
+//         margin: 5px;
+//         display: grid;
+//         background-color: white;
+
+//         .one {
+//             font-size: larger;
+//             font-weight: 500;
+//             padding: 11px;
+//         }
+
+//         .view-comment {
+//             border: 1px solid #ccc;
+//             border-radius: 10px;
+//             margin: 10px;
+//             padding-left: 10px;
+
+//             table {
+//                 width: 100%;
+
+//                 .name {
+//                     width: 10%;
+//                     color: #6e6b6b;
+//                 }
+
+//                 .content {
+//                     width: 90%;
+//                 }
+//             }
+//         }
+//     }
+// }

@@ -86,7 +86,9 @@ function LoginComponent() {
     const handleFacebookSignin = () => {
         signInWithPopup(auth, facebookProvider)
             .then(async (response) => {
+
                 var decoded = jwt_decode(response.user.accessToken);
+                console.log(decoded)
                 try {
                     let response = await LoginSocialApi({
                         username: decoded.user_id,
@@ -129,14 +131,23 @@ function LoginComponent() {
                     </div>
                     <form className="myform">
                         <div className="form-group">
-                            <input type="text" value={formik.values.username} className="form-control" placeholder="User Name"
-                                onChange={formik.handleChange} name="username"
+                            <input type="text"
+                                id="username"
+                                name="username"
+                                value={formik.values.username}
+                                className="form-control"
+                                placeholder="User Name"
+                                onChange={formik.handleChange}
                             />
                         </div>
                         <div className="form-group showpass">
-                            <input type={isShowPassword ? "password" : "text"} value={formik.values.password} className="form-control" placeholder="Password"
-                                onChange={formik.handleChange} name="password"
-
+                            <input type={isShowPassword ? "password" : "text"}
+                                id="password"
+                                name="password"
+                                value={formik.values.password}
+                                className="form-control"
+                                placeholder="Password"
+                                onChange={formik.handleChange}
                             />
                             {isShowPassword ?
                                 <span className='icons-eye'
