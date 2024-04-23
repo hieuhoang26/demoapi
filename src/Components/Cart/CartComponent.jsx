@@ -32,7 +32,7 @@ function CartComponent() {
         setCartData(bookDataArray)
     }
 
-    let handleDelele = (index) => {
+    let handleDelete = (index) => {
         const updatedCartList = [...CartList]
         updatedCartList.splice(index, 1)
         localStorage.setItem("BookIdCartList", JSON.stringify(updatedCartList))
@@ -174,32 +174,50 @@ function CartComponent() {
         <>
             <div className="cart">
                 <div className="cart-item-container">
-                    {
-                        cartData.map((item, index) => (
-                            <div key={index} className="cart-item">
-                                <div className="image"><img src={item.imagePath.substring(23)} /></div>
-                                <div className="title">{item.title}</div>
-                                <div className="price">{item.price} $</div>
-                                <div className="number">
-                                    <div className="number-list">
-                                        <li onClick={() => handleMinusBookNumber(index)}>-</li>
-                                        <li>{CartList[index].bookNumber}</li>
-                                        <li onClick={() => handlePlusBookNumber(index)}>+</li>
-                                    </div>
-                                </div>
-                                <div className="check">
-                                    <input type="checkbox" onChange={(event) => handleSelect(event, index)}></input>
-                                </div>
-                                <div className="delete">
-                                    <button onClick={() => handleDelele(index)}>Delete</button>
-                                </div>
-                            </div>
-                        ))
-                    }
+                    <table className="table tabble-border">
+                        <thead>
+                            <tr>
+                                <th className="font-weight-bold">Book</th>
+                                <th className="font-weight-bold">Name</th>
+                                <th className="font-weight-bold">Price</th>
+                                <th className="font-weight-bold">Quantity</th>
+                                <th className="font-weight-bold">Status</th>
+                                <th className="font-weight-bold">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {cartData.map((item, index) => (
+                                <tr key={index}>
+                                    <th scope="row" >
+                                        <div >
+                                            <img src={`https://bookstore.io.vn${item.imagePath.substring(item.imagePath.indexOf("/images/"))}`} style={{width: "80px",height : "80px"}} alt="Product" />
+                                        </div>
+                                    </th>
+                                    <td>{item.title}</td>
+                                    <td>{item.price} $</td>
+                                    <td>
+                                        <div className="number">
+                                            <div className="flex">
+                                                <span onClick={() => handleMinusBookNumber(index)} className="p-2 rounded-circle bg-input"><i class="bi bi-dash"></i></span>
+                                                <span className="p-2 rounded-circle bg mx-1 ">{CartList[index].bookNumber}</span>
+                                                <span onClick={() => handlePlusBookNumber(index)} className="p-2 rounded-circle bg-input"><i className="bi bi-plus"></i></span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" onChange={(event) => handleSelect(event, index)} />
+                                    </td>
+                                    <td>
+                                        <button onClick={() => handleDelete(index)} className="p-2 rounded-circle bg-input inline"><i class="bi bi-x"></i></button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
                 <div className="control">
                     <div>
-                        <button onClick={handleBuy}>Buy Selected</button>
+                        <button onClick={handleBuy} className="btn btn-primary hover">Buy Selected</button>
                     </div>
                 </div>
             </div>

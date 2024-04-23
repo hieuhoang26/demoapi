@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import './BookDetail.scss'
 import { useAuth } from '../Sercutiry/AuthContext';
+import {
+    MDBTabs,
+    MDBTabsItem,
+    MDBTabsLink,
+    MDBTabsContent,
+    MDBTabsPane
+} from 'mdb-react-ui-kit';
 function BookDetailComponent() {
     let Auth = useAuth()
     let Navigate = useNavigate()
@@ -44,7 +51,6 @@ function BookDetailComponent() {
         retrieveBook()
     }, [])
 
-
     let handleMinusBookNumber = () => {
         if (bookNumber > 1) {
             setBookNumber(bookNumber - 1)
@@ -76,13 +82,23 @@ function BookDetailComponent() {
     let handleViewShop = () => {
         Navigate(`/viewshopdetail/${shop.id}`)
     }
+    //tab-pane
+    const [basicActive, setBasicActive] = useState('description');
+
+    const handleBasicClick = (value) => {
+        if (value === basicActive) {
+            return;
+        }
+
+        setBasicActive(value);
+    };
     return (
         <div className='bookdetail'>
             <div className="book">
                 <div className="image">
                     {bookImages.map((image) => {
                         console.log(bookImages)
-                        return <img src={image.substring(image.indexOf("/images/"))} alt='' key={image} />;
+                        return <img src={`https://bookstore.io.vn${image.substring(image.indexOf("/images/"))}`} alt='' key={image} />;
                     })}
                 </div>
                 <div className="info">
@@ -118,10 +134,10 @@ function BookDetailComponent() {
                                 <li onClick={handlePlusBookNumber}>+</li>
                             </td>
                         </tr>
-                        <tr>
-                            <td className='button'><button onClick={handleAddCart}>Add Cart</button></td>
-                        </tr>
                     </table>
+                    <div className='button'>
+                        <button onClick={handleAddCart}>Add Cart</button>
+                    </div>
                 </div>
             </div>
             <div className='more'>
@@ -155,7 +171,7 @@ function BookDetailComponent() {
                 </div>
                 <div className='shop'>
                     <div className='shop-image'>
-                        {isloadshop && <img src={shop.shopLogoPath.substring(shop.shopLogoPath.indexOf("/images/"))}></img>}
+                        {isloadshop && <img src={`https://bookstore.io.vn${shop.shopLogoPath.substring(shop.shopLogoPath.indexOf("/images/"))}`}></img>}
                     </div>
                     <div className='shop-info'>
                         <div className='detail'>
@@ -166,59 +182,50 @@ function BookDetailComponent() {
                     </div>
                 </div>
             </div>
-            <div className='description'>
-                <div className='label'>
-                    <label>Description</label>
-                </div>
-                <div className='content'>
-                    {bookData.description}
-                </div>
-            </div>
-            <div className="rate">
-                <table>
-                    <tr>
-                        <td className='one'>Five Star</td>
-                        <td>{rateData.fiveStar}</td>
-                    </tr>
-                    <tr>
-                        <td className='one'>Four Star</td>
-                        <td>{rateData.fourStar}</td>
-                    </tr>
-                    <tr>
-                        <td className='one'>Three Star</td>
-                        <td>{rateData.threeStar}</td>
-                    </tr>
-                    <tr>
-                        <td className='one'>Two Star</td>
-                        <td>{rateData.twoStar}</td>
-                    </tr>
-                    <tr>
-                        <td className='one'>One Star</td>
-                        <td>{rateData.oneStar}</td>
-                    </tr>
-                </table>
-            </div>
-            <div className="comment">
-                <div className='one'>
-                    <label>Comment</label>
-                </div>
-                {
-                    reviewData.map((item) => (
-                        <div className="view-comment">
-                            <table>
-                                <tr>
-                                    <td className='name'>User:</td>
-                                    <td className='content'>{item.username}</td>
-                                </tr>
-                                <tr>
-                                    <td className='name'>Comment:</td>
-                                    <td className='content'>{item.comment}</td>
-                                </tr>
-                            </table>
+
+            <MDBTabs className='mt-3'>
+                <MDBTabsItem>
+                    <MDBTabsLink onClick={() => handleBasicClick('description')} active={basicActive === 'description'} className='font-weight-bold'>
+                        Description
+                    </MDBTabsLink>
+                </MDBTabsItem>
+                <MDBTabsItem>
+                    <MDBTabsLink onClick={() => handleBasicClick('review')} active={basicActive === 'review'} className='font-weight-bold'>
+                        Review
+                    </MDBTabsLink>
+                </MDBTabsItem>
+            </MDBTabs>
+            <MDBTabsContent>
+                <MDBTabsPane open={basicActive === 'description'}>
+                    <div className='description'>
+                        <div className='content '>
+                            {bookData.description}
                         </div>
-                    ))
-                }
-            </div>
+                    </div>
+                </MDBTabsPane>
+                <MDBTabsPane open={basicActive === 'review'}>
+                    <div className="comment">
+                        {
+                            reviewData.map((item) => (
+                                <div className="view-comment">
+                                    <table>
+                                        <tr>
+                                            <td className='name'>User:</td>
+                                            <td className='content'>{item.username}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className='name'>Comment:</td>
+                                            <td className='content'>{item.comment}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </MDBTabsPane>
+            </MDBTabsContent>
+            
+
         </div>
 
     )

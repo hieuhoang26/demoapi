@@ -118,7 +118,6 @@ function LoginComponent() {
     const GoToSignUp = () => {
         navigate("/signup")
     }
-
     // login github
 
     return (
@@ -131,12 +130,13 @@ function LoginComponent() {
                     <form className="myform">
                         <div className="form-group">
                             <input type="text" value={formik.values.username} className="form-control" placeholder="User Name"
-                                onChange={formik.handleChange}
+                                onChange={formik.handleChange} name="username"
                             />
                         </div>
                         <div className="form-group showpass">
                             <input type={isShowPassword ? "password" : "text"} value={formik.values.password} className="form-control" placeholder="Password"
-                                onChange={formik.handleChange}
+                                onChange={formik.handleChange} name="password"
+
                             />
                             {isShowPassword ?
                                 <span className='icons-eye'
