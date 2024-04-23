@@ -4,7 +4,7 @@ import './Home.scss';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import { useAuth } from '../Sercutiry/AuthContext';
-import logo1 from '../../assets/Bookshop.gif'
+
 
 function Home() {
 
@@ -99,66 +99,11 @@ function Home() {
                 <div className="container py-5">
                     <div className="row g-5 align-items-center">
                         <div className="col-md-12 col-lg-7">
-                            {/* <h4 className="mb-3 text-secondary">100% Organic Foods</h4>
-                            <h1 className="mb-5 display-3 text-primary">Organic Veggies & Fruits Foods</h1>
-                            <div className="position-relative mx-auto">
-                                <input className="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="number" placeholder="Search" />
-                                <button type="submit" className="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100" style={{ top: 0, right: '25%' }}>Submit Now</button>
-                            </div> */}
                         </div>
-                        {/* <div className="col-md-12 col-lg-5">
-                            <div id="carouselId" className="carousel slide position-relative" data-bs-ride="carousel">
-                                <div className="carousel-inner" role="listbox">
-                                    <div className="carousel-item active rounded">
-                                        <img src="../../../public/hero-img-1.png" className="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide" />
-                                        <a href="#" className="btn px-4 py-2 text-white rounded">Fruits</a>
-                                    </div>
-                                    <div className="carousel-item rounded">
-                                        <img src="../../../public/hero-img-2.jpg" className="img-fluid w-100 h-100 rounded" alt="Second slide" />
-                                        <a href="#" className="btn px-4 py-2 text-white rounded">Vegetables</a>
-                                    </div>
-                                </div>
-                                <button className="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span className="visually-hidden">Previous</span>
-                                </button>
-                                <button className="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span className="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        </div> */}
+
                     </div>
                 </div>
             </div>
-
-            {/* <div className='filter'>
-                <form className="form" onSubmit={filter.handleSubmit}>
-                    <label>Title</label>
-                    <input type="text" name="title" value={filter.values.id} onChange={filter.handleChange} placeholder='enter title' />
-                    <label>Authors</label>
-                    <input className='authors' type="text" name="authors" value={filter.values.authors} onChange={filter.handleChange} placeholder='enter authors' />
-                    <label>Price from</label>
-                    <input className='price' type="number" name="lowPrice" value={filter.values.lowPrice} onChange={filter.handleChange} />
-                    <label>to</label>
-                    <input className='price' type="number" name="highPrice" value={filter.values.highPrice} onChange={filter.handleChange} />
-                    <label>Category</label>
-                    <select name="category" value={filter.values.category} onChange={filter.handleChange}>
-                        <option value="">none</option>
-                        {categories.map((category) => {
-                            return (
-                                <optgroup label={category.name}>
-                                    {category.subcategories.map((subcategory) => (
-                                        <option value={subcategory.name}>{subcategory.name}</option>
-                                    ))}
-                                </optgroup>
-                            )
-                        })
-                        }
-                    </select>
-                    <button type="submit"> Filter </button>
-                </form>
-            </div> */}
             <div className="container-fluid featurs py-5">
                 <div className="container py-5">
                     <div className="row g-4">
